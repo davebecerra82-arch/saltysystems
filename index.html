@@ -39,6 +39,10 @@
       --nav-bg: rgba(13, 13, 13, 0.85);
     }
 
+    /* LANGUAGE TOGGLE */
+    body.lang-en .es { display: none; }
+    body.lang-es .en { display: none; }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -96,20 +100,24 @@
     }
     .nav-cta:hover { border-color: var(--accent) !important; background: var(--accent-dim) !important; }
 
-    .theme-toggle {
+    .theme-toggle, .lang-toggle {
       background: none;
       border: 1px solid var(--border);
       border-radius: 6px;
       color: var(--text-muted);
       cursor: pointer;
-      font-size: 15px;
+      font-size: 12px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.08em;
       padding: 6px 10px;
       line-height: 1;
       transition: border-color 0.2s, color 0.2s;
       display: flex;
       align-items: center;
     }
-    .theme-toggle:hover { border-color: var(--accent); color: var(--text); }
+    .theme-toggle { font-size: 15px; }
+    .theme-toggle:hover, .lang-toggle:hover { border-color: var(--accent); color: var(--text); }
 
     /* SECTIONS */
     section { padding: 72px 40px; max-width: 1100px; margin: 0 auto; }
@@ -641,16 +649,17 @@
     }
   </style>
 </head>
-<body>
+<body class="lang-en">
 
   <!-- NAV -->
   <nav>
     <a href="#top" class="nav-logo"><span>Salty</span> Systems</a>
     <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
+      <li><a href="#team"><span class="en">Team</span><span class="es">Equipo</span></a></li>
+      <li><a href="#work"><span class="en">Work</span><span class="es">Trabajos</span></a></li>
+      <li><a href="#contact" class="nav-cta"><span class="en">Get in touch</span><span class="es">Contáctanos</span></a></li>
+      <li><button class="lang-toggle" id="langToggle">ES</button></li>
       <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button></li>
     </ul>
   </nav>
@@ -658,14 +667,21 @@
   <!-- HERO -->
   <div class="hero" id="top">
     <div class="hero-content">
-      <p class="hero-eyebrow">AI-Native GTM Agency · Barcelona</p>
-      <h1>We don't just build the pipeline. <em>We run it.</em></h1>
+      <p class="hero-eyebrow">
+        <span class="en">AI-Native GTM Agency · Barcelona</span>
+        <span class="es">Agencia GTM Nativa en IA · Barcelona</span>
+      </p>
+      <h1>
+        <span class="en">We don't just build the pipeline. <em>We run it.</em></span>
+        <span class="es">No solo construimos el pipeline. <em>Lo ejecutamos.</em></span>
+      </h1>
       <p class="hero-body">
-        Salty Systems pairs two halves of the same GTM motion: the engineering that creates qualified pipeline, and the operation that turns it into booked meetings and closed deals. One builds the engine. One drives it. AI makes both scale.
+        <span class="en">Salty Systems pairs two halves of the same GTM motion: the engineering that creates qualified pipeline, and the operation that turns it into booked meetings and closed deals. One builds the engine. One drives it. AI makes both scale.</span>
+        <span class="es">Salty Systems combina dos mitades del mismo movimiento GTM: la ingeniería que crea pipeline cualificado, y la operación que lo convierte en reuniones agendadas y deals cerrados. Uno construye el motor. El otro lo conduce. La IA hace que ambos escalen.</span>
       </p>
       <div class="hero-actions">
-        <a href="#services" class="btn-primary">See what we do</a>
-        <a href="#contact" class="btn-secondary">Talk to us</a>
+        <a href="#services" class="btn-primary"><span class="en">See what we do</span><span class="es">Ver qué hacemos</span></a>
+        <a href="#contact" class="btn-secondary"><span class="en">Talk to us</span><span class="es">Háblanos</span></a>
       </div>
     </div>
 
@@ -758,19 +774,28 @@
 
   <!-- WHAT WE DO -->
   <div class="what-we-do">
-    <p class="what-eyebrow">What We Do</p>
-    <h2 class="what-title">One team. Full cycle. No juniors.</h2>
-    <p class="what-intro">Most GTM agencies do one thing. We cover the full loop: build the infrastructure, run the outbound, capture inbound signals, and implement the AI that makes all of it scale. Every engagement is run by the founders.</p>
+    <p class="what-eyebrow"><span class="en">What We Do</span><span class="es">Qué Hacemos</span></p>
+    <h2 class="what-title"><span class="en">One team. Full cycle. No juniors.</span><span class="es">Un equipo. Ciclo completo. Sin juniors.</span></h2>
+    <p class="what-intro">
+      <span class="en">Most GTM agencies do one thing. We cover the full loop: build the infrastructure, run the outbound, capture inbound signals, and implement the AI that makes all of it scale. Every engagement is run by the founders.</span>
+      <span class="es">La mayoría de agencias GTM hacen una sola cosa. Nosotros cubrimos el ciclo completo: construimos la infraestructura, ejecutamos el outbound, captamos señales inbound e implementamos la IA que hace que todo escale. Cada engagement lo dirigen los fundadores.</span>
+    </p>
     <div class="two-cards">
       <div class="half-card">
-        <div class="half-card-label">GTM Engineering / Dave</div>
-        <div class="half-card-title">Build the engine.</div>
-        <p class="half-card-body">ICP scoring, enrichment waterfalls, CRM automation, and outbound infrastructure: the systems that surface the right accounts and feed clean, prioritised pipeline into your CRM.</p>
+        <div class="half-card-label"><span class="en">GTM Engineering / Dave</span><span class="es">Ingeniería GTM / Dave</span></div>
+        <div class="half-card-title"><span class="en">Build the engine.</span><span class="es">Construye el motor.</span></div>
+        <p class="half-card-body">
+          <span class="en">ICP scoring, enrichment waterfalls, CRM automation, and outbound infrastructure: the systems that surface the right accounts and feed clean, prioritised pipeline into your CRM.</span>
+          <span class="es">Scoring de ICP, waterfalls de enriquecimiento, automatización de CRM e infraestructura outbound: los sistemas que identifican las cuentas correctas y alimentan pipeline limpio y priorizado en tu CRM.</span>
+        </p>
       </div>
       <div class="half-card">
-        <div class="half-card-label">GTM Operations / Tomás</div>
-        <div class="half-card-title">Drive the pipeline.</div>
-        <p class="half-card-body">Multichannel outbound execution and SDR team management that turns that pipeline into real conversations: qualified meetings booked with decision-makers, consistently and at volume.</p>
+        <div class="half-card-label"><span class="en">GTM Operations / Tomás</span><span class="es">Operaciones GTM / Tomás</span></div>
+        <div class="half-card-title"><span class="en">Drive the pipeline.</span><span class="es">Impulsa el pipeline.</span></div>
+        <p class="half-card-body">
+          <span class="en">Multichannel outbound execution and SDR team management that turns that pipeline into real conversations: qualified meetings booked with decision-makers, consistently and at volume.</span>
+          <span class="es">Ejecución outbound multicanal y gestión de equipos SDR que convierte ese pipeline en conversaciones reales: reuniones cualificadas con decisores, de forma consistente y a volumen.</span>
+        </p>
       </div>
     </div>
   </div>
@@ -780,25 +805,28 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="services-header">
-      <p class="section-eyebrow">Services</p>
-      <h2 class="section-title">What we offer</h2>
+      <p class="section-eyebrow"><span class="en">Services</span><span class="es">Servicios</span></p>
+      <h2 class="section-title"><span class="en">What we offer</span><span class="es">Qué ofrecemos</span></h2>
     </div>
 
     <!-- Service 1: GTM Engineering -->
     <div class="service-card">
       <div class="service-meta">
-        <span class="service-tag">Infrastructure</span>
-        <span class="service-tag">Enrichment</span>
-        <span class="service-tag neutral">GTM Engineering</span>
+        <span class="service-tag"><span class="en">Infrastructure</span><span class="es">Infraestructura</span></span>
+        <span class="service-tag"><span class="en">Enrichment</span><span class="es">Enriquecimiento</span></span>
+        <span class="service-tag neutral"><span class="en">GTM Engineering</span><span class="es">Ingeniería GTM</span></span>
       </div>
-      <h3 class="service-title">GTM Engineering</h3>
-      <p class="service-description">The foundation. We build the system that surfaces the right accounts and feeds clean, prioritised pipeline into your CRM, so your team spends time on conversations, not data cleanup.</p>
+      <h3 class="service-title"><span class="en">GTM Engineering</span><span class="es">Ingeniería GTM</span></h3>
+      <p class="service-description">
+        <span class="en">The foundation. We build the system that surfaces the right accounts and feeds clean, prioritised pipeline into your CRM, so your team spends time on conversations, not data cleanup.</span>
+        <span class="es">La base. Construimos el sistema que identifica las cuentas correctas y alimenta pipeline limpio y priorizado en tu CRM, para que tu equipo dedique tiempo a conversaciones, no a limpiar datos.</span>
+      </p>
       <ul class="service-bullets">
-        <li>ICP definition and multi-dimensional scoring models</li>
-        <li>Enrichment waterfalls (Clay, Apollo, Prospeo, Claygent) with AI verification</li>
-        <li>CRM configuration and automation (HubSpot, Salesforce)</li>
-        <li>Outbound infrastructure architecture: deliverability, sequencing, tooling</li>
-        <li>Lead routing, tiering, and prioritisation logic</li>
+        <li><span class="en">ICP definition and multi-dimensional scoring models</span><span class="es">Definición de ICP y modelos de scoring multidimensional</span></li>
+        <li><span class="en">Enrichment waterfalls (Clay, Apollo, Prospeo, Claygent) with AI verification</span><span class="es">Waterfalls de enriquecimiento (Clay, Apollo, Prospeo, Claygent) con verificación IA</span></li>
+        <li><span class="en">CRM configuration and automation (HubSpot, Salesforce)</span><span class="es">Configuración y automatización de CRM (HubSpot, Salesforce)</span></li>
+        <li><span class="en">Outbound infrastructure architecture: deliverability, sequencing, tooling</span><span class="es">Arquitectura de infraestructura outbound: entregabilidad, secuencias, herramientas</span></li>
+        <li><span class="en">Lead routing, tiering, and prioritisation logic</span><span class="es">Lógica de routing, segmentación y priorización de leads</span></li>
       </ul>
       <div class="service-stack">
         <span class="stack-chip">Clay</span>
@@ -814,17 +842,20 @@
     <div class="service-card">
       <div class="service-meta">
         <span class="service-tag">Outbound</span>
-        <span class="service-tag">SDR Management</span>
-        <span class="service-tag neutral">Pipeline Execution</span>
+        <span class="service-tag"><span class="en">SDR Management</span><span class="es">Gestión SDR</span></span>
+        <span class="service-tag neutral"><span class="en">Pipeline Execution</span><span class="es">Ejecución de Pipeline</span></span>
       </div>
-      <h3 class="service-title">Outbound Execution & Meeting Booking</h3>
-      <p class="service-description">We run the outreach. Most enrichment systems stop at a clean list. We take it the rest of the way: sequencing, messaging, calls, follow-up, and we manage the SDR team that books qualified meetings directly into your calendar.</p>
+      <h3 class="service-title"><span class="en">Outbound Execution & Meeting Booking</span><span class="es">Ejecución Outbound y Reserva de Reuniones</span></h3>
+      <p class="service-description">
+        <span class="en">We run the outreach. Most enrichment systems stop at a clean list. We take it the rest of the way: sequencing, messaging, calls, follow-up, and we manage the SDR team that books qualified meetings directly into your calendar.</span>
+        <span class="es">Nosotros ejecutamos el outreach. La mayoría de sistemas de enriquecimiento se detienen en una lista limpia. Nosotros lo llevamos hasta el final: secuencias, mensajería, llamadas, seguimiento, y gestionamos el equipo SDR que reserva reuniones cualificadas directamente en tu calendario.</span>
+      </p>
       <ul class="service-bullets">
-        <li>Multichannel outbound execution: email, LinkedIn, cold call</li>
-        <li>Messaging and sequence design, tested and iterated against reply and booking rates</li>
-        <li>Dedicated SDR team management: targets, coaching, performance tracking</li>
-        <li>Qualified meetings booked straight into your calendar</li>
-        <li>Weekly reporting on activity, conversion, and meetings set</li>
+        <li><span class="en">Multichannel outbound execution: email, LinkedIn, cold call</span><span class="es">Ejecución outbound multicanal: email, LinkedIn, llamada en frío</span></li>
+        <li><span class="en">Messaging and sequence design, tested and iterated against reply and booking rates</span><span class="es">Diseño de mensajes y secuencias, testados e iterados según tasas de respuesta y reservas</span></li>
+        <li><span class="en">Dedicated SDR team management: targets, coaching, performance tracking</span><span class="es">Gestión de equipo SDR dedicado: objetivos, coaching, seguimiento de rendimiento</span></li>
+        <li><span class="en">Qualified meetings booked straight into your calendar</span><span class="es">Reuniones cualificadas reservadas directamente en tu calendario</span></li>
+        <li><span class="en">Weekly reporting on activity, conversion, and meetings set</span><span class="es">Informes semanales de actividad, conversión y reuniones cerradas</span></li>
       </ul>
       <div class="service-stack">
         <span class="stack-chip">Instantly</span>
@@ -839,17 +870,20 @@
     <div class="service-card">
       <div class="service-meta">
         <span class="service-tag">Inbound</span>
-        <span class="service-tag">Signal Capture</span>
-        <span class="service-tag neutral">Demand Generation</span>
+        <span class="service-tag"><span class="en">Signal Capture</span><span class="es">Captura de Señales</span></span>
+        <span class="service-tag neutral"><span class="en">Demand Generation</span><span class="es">Generación de Demanda</span></span>
       </div>
-      <h3 class="service-title">Inbound & Signal Capture</h3>
-      <p class="service-description">Content and intent signals that attract the right buyers, automatically fed into your pipeline. Every whitepaper download, page visit, and form fill triggers the right enrichment and outreach workflow. No lead left behind.</p>
+      <h3 class="service-title"><span class="en">Inbound & Signal Capture</span><span class="es">Inbound y Captura de Señales</span></h3>
+      <p class="service-description">
+        <span class="en">Content and intent signals that attract the right buyers, automatically fed into your pipeline. Every whitepaper download, page visit, and form fill triggers the right enrichment and outreach workflow. No lead left behind.</span>
+        <span class="es">Contenido y señales de intención que atraen a los compradores correctos, alimentados automáticamente en tu pipeline. Cada descarga, visita a página o formulario activa el workflow de enriquecimiento y outreach correcto. Ningún lead se pierde.</span>
+      </p>
       <ul class="service-bullets">
-        <li>Content strategy and lead magnet creation</li>
-        <li>Website intent tracking and visitor identification</li>
-        <li>Signal-to-pipeline automation: inbound triggers routed into Clay and CRM</li>
-        <li>Lead scoring for inbound contacts against ICP criteria</li>
-        <li>Nurture sequences triggered by product and content behaviour</li>
+        <li><span class="en">Content strategy and lead magnet creation</span><span class="es">Estrategia de contenido y creación de lead magnets</span></li>
+        <li><span class="en">Website intent tracking and visitor identification</span><span class="es">Seguimiento de intención web e identificación de visitantes</span></li>
+        <li><span class="en">Signal-to-pipeline automation: inbound triggers routed into Clay and CRM</span><span class="es">Automatización señal-a-pipeline: triggers inbound enrutados a Clay y CRM</span></li>
+        <li><span class="en">Lead scoring for inbound contacts against ICP criteria</span><span class="es">Scoring de leads inbound contra criterios de ICP</span></li>
+        <li><span class="en">Nurture sequences triggered by product and content behaviour</span><span class="es">Secuencias de nurturing activadas por comportamiento de producto y contenido</span></li>
       </ul>
       <div class="service-stack">
         <span class="stack-chip">Make</span>
@@ -862,18 +896,21 @@
     <!-- Service 4: AI Strategy & Implementation -->
     <div class="service-card">
       <div class="service-meta">
-        <span class="service-tag">AI Strategy</span>
-        <span class="service-tag">Automation</span>
-        <span class="service-tag neutral">Custom Tooling</span>
+        <span class="service-tag"><span class="en">AI Strategy</span><span class="es">Estrategia IA</span></span>
+        <span class="service-tag"><span class="en">Automation</span><span class="es">Automatización</span></span>
+        <span class="service-tag neutral"><span class="en">Custom Tooling</span><span class="es">Herramientas a Medida</span></span>
       </div>
-      <h3 class="service-title">AI Strategy, Implementation & Tooling</h3>
-      <p class="service-description">We identify where AI changes your GTM, then build the tools to prove it. From internal prototypes to production: custom workflows, automated scoring, personalisation at scale, and team training. Strategy first, then something that actually works.</p>
+      <h3 class="service-title"><span class="en">AI Strategy, Implementation & Tooling</span><span class="es">Estrategia, Implementación y Herramientas IA</span></h3>
+      <p class="service-description">
+        <span class="en">We identify where AI changes your GTM, then build the tools to prove it. From internal prototypes to production: custom workflows, automated scoring, personalisation at scale, and team training. Strategy first, then something that actually works.</span>
+        <span class="es">Identificamos dónde la IA cambia tu GTM y construimos las herramientas para demostrarlo. Desde prototipos internos hasta producción: workflows personalizados, scoring automatizado, personalización a escala y formación de equipos. Estrategia primero, luego algo que realmente funciona.</span>
+      </p>
       <ul class="service-bullets">
-        <li>AI audit: where AI creates leverage in your current GTM motion</li>
-        <li>Custom Claude and GPT-powered workflows for scoring, research, and personalisation</li>
-        <li>Make.com automation pipelines connecting your full stack</li>
-        <li>Bespoke internal tools: dashboards, intelligence hubs, custom reporting</li>
-        <li>Team training and practical AI adoption programmes</li>
+        <li><span class="en">AI audit: where AI creates leverage in your current GTM motion</span><span class="es">Auditoría IA: dónde la IA crea apalancamiento en tu movimiento GTM actual</span></li>
+        <li><span class="en">Custom Claude and GPT-powered workflows for scoring, research, and personalisation</span><span class="es">Workflows personalizados con Claude y GPT para scoring, investigación y personalización</span></li>
+        <li><span class="en">Make.com automation pipelines connecting your full stack</span><span class="es">Pipelines de automatización Make.com conectando tu stack completo</span></li>
+        <li><span class="en">Bespoke internal tools: dashboards, intelligence hubs, custom reporting</span><span class="es">Herramientas internas a medida: dashboards, hubs de inteligencia, informes personalizados</span></li>
+        <li><span class="en">Team training and practical AI adoption programmes</span><span class="es">Formación de equipos y programas prácticos de adopción de IA</span></li>
       </ul>
       <div class="service-stack">
         <span class="stack-chip">Claude API</span>
@@ -889,17 +926,23 @@
 
   <!-- TEAM -->
   <section id="team">
-    <p class="section-eyebrow">The Team</p>
-    <h2 class="section-title">Three founders. One motion.</h2>
+    <p class="section-eyebrow"><span class="en">The Team</span><span class="es">El Equipo</span></p>
+    <h2 class="section-title"><span class="en">Three founders. One motion.</span><span class="es">Tres fundadores. Un movimiento.</span></h2>
     <div class="team-grid">
 
       <!-- Dave -->
       <div class="team-card">
         <img src="https://raw.githubusercontent.com/davebecerra82-arch/portfolio/main/photo.JPG" alt="Dave Becerra" class="team-avatar">
-        <div class="team-role">GTM Engineer</div>
+        <div class="team-role"><span class="en">GTM Engineer</span><span class="es">Ingeniero GTM</span></div>
         <div class="team-name">Dave Becerra</div>
-        <div class="team-headline">15 years in B2B SaaS. From co-founder to enterprise CS leader to GTM builder.</div>
-        <p class="team-bio">Co-founded Roambi (acquired by SAP), then built SAP's EMEA digital CS function: $125M book, 1,500+ accounts. Now designs and builds the GTM infrastructure that connects data, enrichment, scoring, and CRM into systems that drive revenue.</p>
+        <div class="team-headline">
+          <span class="en">15 years in B2B SaaS. From co-founder to enterprise CS leader to GTM builder.</span>
+          <span class="es">15 años en B2B SaaS. De cofundador a líder de CS empresarial a constructor GTM.</span>
+        </div>
+        <p class="team-bio">
+          <span class="en">Co-founded Roambi (acquired by SAP), then built SAP's EMEA digital CS function: $125M book, 1,500+ accounts. Now designs and builds the GTM infrastructure that connects data, enrichment, scoring, and CRM into systems that drive revenue.</span>
+          <span class="es">Cofundó Roambi (adquirida por SAP) y luego construyó la función de CS digital EMEA de SAP: $125M de book, 1.500+ cuentas. Ahora diseña y construye la infraestructura GTM que conecta datos, enriquecimiento, scoring y CRM en sistemas que impulsan ingresos.</span>
+        </p>
         <div class="team-chips">
           <span class="stack-chip">Clay</span>
           <span class="stack-chip">Claude API</span>
@@ -912,10 +955,16 @@
       <!-- Tomás -->
       <div class="team-card">
         <img src="https://raw.githubusercontent.com/davebecerra82-arch/saltysystems/main/tomas.jpg" alt="Tomás Ramon Fabra" class="team-avatar">
-        <div class="team-role">GTM Operator & Outbound Lead</div>
+        <div class="team-role"><span class="en">GTM Operator & Outbound Lead</span><span class="es">Operador GTM y Líder Outbound</span></div>
         <div class="team-name">Tomás Ramon Fabra</div>
-        <div class="team-headline">I've worked every seat in the funnel. From cold call to closed deal.</div>
-        <p class="team-bio">8+ years in B2B sales and GTM. Came up through the full outbound ladder: SDR, Account Executive, Sales Team Lead at a Techstars '24-backed startup. At Salty Systems, owns outbound execution and SDR team management. Also leads BD at Nexen Capital.</p>
+        <div class="team-headline">
+          <span class="en">I've worked every seat in the funnel. From cold call to closed deal.</span>
+          <span class="es">He trabajado en todos los puestos del funnel. Desde llamada en frío hasta deal cerrado.</span>
+        </div>
+        <p class="team-bio">
+          <span class="en">8+ years in B2B sales and GTM. Came up through the full outbound ladder: SDR, Account Executive, Sales Team Lead at a Techstars '24-backed startup. At Salty Systems, owns outbound execution and SDR team management. Also leads BD at Nexen Capital.</span>
+          <span class="es">8+ años en ventas B2B y GTM. Ascendió por la escalera outbound completa: SDR, Account Executive, Sales Team Lead en una startup respaldada por Techstars '24. En Salty Systems, lidera la ejecución outbound y la gestión del equipo SDR. También lidera BD en Nexen Capital.</span>
+        </p>
         <div class="team-chips">
           <span class="stack-chip">Apollo</span>
           <span class="stack-chip">Smartlead</span>
@@ -928,10 +977,16 @@
       <!-- Third founder — coming soon -->
       <div class="team-card" style="opacity: 0.6;">
         <div class="team-avatar-placeholder" style="border-style: dashed;">+</div>
-        <div class="team-role">AI Strategy & Implementation</div>
-        <div class="team-name" style="font-style: italic; color: var(--text-muted);">Coming soon</div>
-        <div class="team-headline">Led AI transformation for a 380-person global network. Strategy first, then tools that work.</div>
-        <p class="team-bio">Built the Climate Insights Hub from prototype to 1,500+ users across 200+ organisations. Trained 500+ people on practical AI adoption. Rolled out automation pipelines benchmarking leading AI models.</p>
+        <div class="team-role"><span class="en">AI Strategy & Implementation</span><span class="es">Estrategia e Implementación IA</span></div>
+        <div class="team-name" style="font-style: italic; color: var(--text-muted);"><span class="en">Coming soon</span><span class="es">Próximamente</span></div>
+        <div class="team-headline">
+          <span class="en">Led AI transformation for a 380-person global network. Strategy first, then tools that work.</span>
+          <span class="es">Lideró la transformación IA de una red global de 380 personas. Estrategia primero, luego herramientas que funcionan.</span>
+        </div>
+        <p class="team-bio">
+          <span class="en">Built the Climate Insights Hub from prototype to 1,500+ users across 200+ organisations. Trained 500+ people on practical AI adoption. Rolled out automation pipelines benchmarking leading AI models.</span>
+          <span class="es">Construyó el Climate Insights Hub desde prototipo hasta 1.500+ usuarios en 200+ organizaciones. Formó a 500+ personas en adopción práctica de IA. Desplegó pipelines de automatización benchmarkeando los principales modelos de IA.</span>
+        </p>
         <div class="team-chips">
           <span class="stack-chip">Claude</span>
           <span class="stack-chip">Make</span>
@@ -947,54 +1002,60 @@
   <!-- WORK -->
   <section id="work">
     <div class="services-header">
-      <p class="section-eyebrow">Selected Work</p>
-      <h2 class="section-title">What we've built</h2>
+      <p class="section-eyebrow"><span class="en">Selected Work</span><span class="es">Trabajo Seleccionado</span></p>
+      <h2 class="section-title"><span class="en">What we've built</span><span class="es">Lo que hemos construido</span></h2>
     </div>
 
     <!-- Case study 1: Nexen Capital -->
     <div class="project-card">
       <div class="project-meta">
-        <span class="project-tag">ICP Scoring</span>
-        <span class="project-tag">Enrichment Pipeline</span>
+        <span class="project-tag"><span class="en">ICP Scoring</span><span class="es">Scoring ICP</span></span>
+        <span class="project-tag"><span class="en">Enrichment Pipeline</span><span class="es">Pipeline de Enriquecimiento</span></span>
         <span class="project-tag neutral">Nexen Capital</span>
       </div>
-      <h3 class="project-title">B2B SaaS Lead Scoring & Enrichment Pipeline</h3>
-      <p class="project-description">Nexen Capital needed a repeatable way to identify which B2B SaaS startups were worth pursuing. We designed and built a full enrichment and ICP scoring pipeline: pulling raw leads from Apollo, enriching through a Clay waterfall, scoring via Claude API against a weighted rubric, and exporting directly into HubSpot. Hard disqualifiers filtered out noise before scoring ran, keeping the output clean and actionable.</p>
+      <h3 class="project-title">
+        <span class="en">B2B SaaS Lead Scoring & Enrichment Pipeline</span>
+        <span class="es">Pipeline de Scoring y Enriquecimiento de Leads B2B SaaS</span>
+      </h3>
+      <p class="project-description">
+        <span class="en">Nexen Capital needed a repeatable way to identify which B2B SaaS startups were worth pursuing. We designed and built a full enrichment and ICP scoring pipeline: pulling raw leads from Apollo, enriching through a Clay waterfall, scoring via Claude API against a weighted rubric, and exporting directly into HubSpot. Hard disqualifiers filtered out noise before scoring ran, keeping the output clean and actionable.</span>
+        <span class="es">Nexen Capital necesitaba una forma repetible de identificar qué startups B2B SaaS merecían la pena. Diseñamos y construimos un pipeline completo de enriquecimiento y scoring ICP: extrayendo leads de Apollo, enriqueciendo mediante un waterfall de Clay, puntuando con Claude API contra una rúbrica ponderada y exportando directamente a HubSpot. Los disqualificadores duros filtraron el ruido antes de que corriera el scoring, manteniendo el output limpio y accionable.</span>
+      </p>
 
       <div class="process-row">
         <div class="process-step">
           <div class="process-num">INGEST</div>
           <div class="process-name">Apollo</div>
-          <div class="process-detail">Raw lead list pulled by firmographic filters</div>
+          <div class="process-detail"><span class="en">Raw lead list pulled by firmographic filters</span><span class="es">Lista de leads extraída por filtros firmográficos</span></div>
         </div>
         <div class="process-step">
           <div class="process-num">ENRICH</div>
           <div class="process-name">Clay</div>
-          <div class="process-detail">Prospeo → Apollo → Claygent waterfall with AI verification</div>
+          <div class="process-detail"><span class="en">Prospeo → Apollo → Claygent waterfall with AI verification</span><span class="es">Waterfall Prospeo → Apollo → Claygent con verificación IA</span></div>
         </div>
         <div class="process-step">
           <div class="process-num">SCORE</div>
           <div class="process-name">Claude API</div>
-          <div class="process-detail">Weighted rubric across 6 dimensions</div>
+          <div class="process-detail"><span class="en">Weighted rubric across 6 dimensions</span><span class="es">Rúbrica ponderada en 6 dimensiones</span></div>
         </div>
         <div class="process-step">
           <div class="process-num">EXPORT</div>
           <div class="process-name">HubSpot</div>
-          <div class="process-detail">Custom properties, tier structures, deal pipeline</div>
+          <div class="process-detail"><span class="en">Custom properties, tier structures, deal pipeline</span><span class="es">Propiedades personalizadas, estructuras de tier, pipeline de deals</span></div>
         </div>
       </div>
 
       <div class="project-grid">
         <div class="project-stat">
-          <div class="stat-label">Companies Scored</div>
+          <div class="stat-label"><span class="en">Companies Scored</span><span class="es">Empresas Puntuadas</span></div>
           <div class="stat-value">4,900+</div>
         </div>
         <div class="project-stat">
-          <div class="stat-label">LinkedIn Match Rate</div>
+          <div class="stat-label"><span class="en">LinkedIn Match Rate</span><span class="es">Tasa de Match LinkedIn</span></div>
           <div class="stat-value">84%</div>
         </div>
         <div class="project-stat">
-          <div class="stat-label">Email Discovery</div>
+          <div class="stat-label"><span class="en">Email Discovery</span><span class="es">Descubrimiento de Email</span></div>
           <div class="stat-value">59%</div>
         </div>
       </div>
@@ -1012,12 +1073,18 @@
     <!-- Case study 2: Pipeline Generation — coming soon -->
     <div class="project-card" style="opacity: 0.6;">
       <div class="project-meta">
-        <span class="project-tag">Outbound Execution</span>
-        <span class="project-tag">Meeting Booking</span>
-        <span class="project-tag neutral">Case study in progress</span>
+        <span class="project-tag"><span class="en">Outbound Execution</span><span class="es">Ejecución Outbound</span></span>
+        <span class="project-tag"><span class="en">Meeting Booking</span><span class="es">Reserva de Reuniones</span></span>
+        <span class="project-tag neutral"><span class="en">Case study in progress</span><span class="es">Caso de estudio en progreso</span></span>
       </div>
-      <h3 class="project-title">Pipeline Generation & Meeting Booking</h3>
-      <p class="project-description">Full-cycle outbound engagement: scored pipeline fed directly into multichannel sequences, managed SDR team running execution, qualified meetings booked into client calendar. Weekly reporting on activity, conversion, and meetings set.</p>
+      <h3 class="project-title">
+        <span class="en">Pipeline Generation & Meeting Booking</span>
+        <span class="es">Generación de Pipeline y Reserva de Reuniones</span>
+      </h3>
+      <p class="project-description">
+        <span class="en">Full-cycle outbound engagement: scored pipeline fed directly into multichannel sequences, managed SDR team running execution, qualified meetings booked into client calendar. Weekly reporting on activity, conversion, and meetings set.</span>
+        <span class="es">Engagement outbound de ciclo completo: pipeline puntuado alimentado directamente en secuencias multicanal, equipo SDR gestionando la ejecución, reuniones cualificadas reservadas en el calendario del cliente. Informes semanales de actividad, conversión y reuniones cerradas.</span>
+      </p>
 
       <div class="service-stack">
         <span class="stack-chip">Apollo</span>
@@ -1034,10 +1101,13 @@
   <!-- CONTACT -->
   <section>
     <div class="contact-inner">
-      <h2 class="contact-title">Ready to build?</h2>
-      <p class="contact-sub">We work with B2B SaaS startups that need to build GTM that actually works. If that's you, let's talk.</p>
+      <h2 class="contact-title"><span class="en">Ready to build?</span><span class="es">¿Listo para construir?</span></h2>
+      <p class="contact-sub">
+        <span class="en">We work with B2B SaaS startups that need to build GTM that actually works. If that's you, let's talk.</span>
+        <span class="es">Trabajamos con startups B2B SaaS que necesitan construir un GTM que realmente funcione. Si eso eres tú, hablemos.</span>
+      </p>
       <div class="contact-links">
-        <a href="mailto:davebecerra82@gmail.com" class="btn-primary">Get in touch</a>
+        <a href="mailto:davebecerra82@gmail.com" class="btn-primary"><span class="en">Get in touch</span><span class="es">Contáctanos</span></a>
         <a href="https://www.linkedin.com/in/dabecerra/" target="_blank" rel="noopener" class="btn-secondary">LinkedIn</a>
       </div>
     </div>
@@ -1052,15 +1122,33 @@
   </footer>
 
   <script>
-    const toggle = document.getElementById('themeToggle');
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    const saved = localStorage.getItem('ss-theme');
-    if (saved === 'dark') { body.classList.add('dark'); toggle.textContent = '☀️'; }
-    else { toggle.textContent = '🌙'; }
-    toggle.addEventListener('click', () => {
+    const savedTheme = localStorage.getItem('ss-theme');
+    if (savedTheme === 'dark') { body.classList.add('dark'); themeToggle.textContent = '☀️'; }
+    else { themeToggle.textContent = '🌙'; }
+    themeToggle.addEventListener('click', () => {
       const isDark = body.classList.toggle('dark');
-      toggle.textContent = isDark ? '☀️' : '🌙';
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
       localStorage.setItem('ss-theme', isDark ? 'dark' : 'light');
+    });
+
+    // Language toggle
+    const langToggle = document.getElementById('langToggle');
+    const savedLang = localStorage.getItem('ss-lang') || 'en';
+    if (savedLang === 'es') {
+      body.classList.remove('lang-en');
+      body.classList.add('lang-es');
+      langToggle.textContent = 'EN';
+      document.documentElement.lang = 'es';
+    }
+    langToggle.addEventListener('click', () => {
+      const isEs = body.classList.toggle('lang-es');
+      body.classList.toggle('lang-en', !isEs);
+      langToggle.textContent = isEs ? 'EN' : 'ES';
+      document.documentElement.lang = isEs ? 'es' : 'en';
+      localStorage.setItem('ss-lang', isEs ? 'es' : 'en');
     });
   </script>
 
