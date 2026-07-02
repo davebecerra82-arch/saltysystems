@@ -649,7 +649,7 @@
     }
   </style>
 </head>
-<body class="lang-en">
+<body class="lang-es">
 
   <!-- NAV -->
   <nav>
@@ -1116,10 +1116,13 @@
 
     // Language toggle
     const langToggle = document.getElementById('langToggle');
-    const savedLang = localStorage.getItem('ss-lang') || 'en';
-    if (savedLang === 'es') {
-      body.classList.remove('lang-en');
-      body.classList.add('lang-es');
+    const savedLang = localStorage.getItem('ss-lang') || 'es';
+    if (savedLang === 'en') {
+      body.classList.remove('lang-es');
+      body.classList.add('lang-en');
+      langToggle.textContent = 'ES';
+      document.documentElement.lang = 'en';
+    } else {
       langToggle.textContent = 'EN';
       document.documentElement.lang = 'es';
     }
